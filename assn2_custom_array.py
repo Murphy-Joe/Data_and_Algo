@@ -3,8 +3,6 @@
 
 ## Assn 2 Custom Array Class - Joe Murphy
 
-import copy
-
 class Book:
     def __init__(self, name):
         self.name = name 

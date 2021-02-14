@@ -1,4 +1,3 @@
-import copy
 
 class Book:
     def __init__(self, name):
@@ -31,8 +30,7 @@ class Bookshelf:
         if position < 0 or position > len(self.shelf):
             return
 
-        newBookshelf = copy.deepcopy(self.shelf)
-        newBookshelf.append(book)
+        newBookshelf = (len(self.shelf) + 1) * [None]
 
         for i in range(len(newBookshelf)):
             if i < position:
