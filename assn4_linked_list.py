@@ -182,7 +182,7 @@ fifth = Node(5)
 llist.update_or_replace_node(1, fifth)
 llist.print()
 
-print("\nAdd some more nodes for the sorting test")
+print("\nAdd more nodes for the sorting test")
 llist.insert_node(0,fourth)
 llist.insert_node(4, first)
 llist.print()
