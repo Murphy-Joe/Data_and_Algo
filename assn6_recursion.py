@@ -150,6 +150,13 @@ class LinkedList:
             
         return new_llist
 
+    def recursive_print(self, node):
+        print(node.get_data())
+        if node.get_next():
+            return self.recursive_print(node.get_next())
+
+                
+            
 
 
 # Start with the empty list 
@@ -191,6 +198,9 @@ print("\nSort the linked list in ascending order by data value")
 sorted_llist = llist.ascend_nodes_by_data_val()
 sorted_llist.print()
 
+print("\nPrint the linked list via recursion")
+head_of_llist = sorted_llist.head_node()
+sorted_llist.recursive_print(head_of_llist)
 
 
 
