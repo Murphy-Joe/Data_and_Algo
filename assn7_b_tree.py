@@ -6,6 +6,7 @@ class NodeTree:
 
 
     def __init__(self, values: list):
+        values = sorted(values)
         self.values = values
         length = len(values)
         self.left_child = None
@@ -37,13 +38,13 @@ class NodeTree:
         elif val < self.value:
             return self.left_child.binary_search_digits(val)
 
-    def binary_search_strings(self, val):
+    """ def binary_search_strings(self, val):
         if val == self.value:
             return f"String {val} found at Node Object {self}"
         elif val > self.value:
             return self.right_child.binary_search_digits(val)
         elif val < self.value:
-            return self.left_child.binary_search_digits(val)
+            return self.left_child.binary_search_digits(val) """
                 
 
 digit_tree1 = NodeTree([1,2,3,4,5,6,7])
@@ -51,7 +52,7 @@ res1 = digit_tree1.binary_search_digits(2)
 print(res1)
 
 digit_tree2 = NodeTree([7,1,6,2,5,3,4])
-res2 = digit_tree1.binary_search_digits(2)
+res2 = digit_tree2.binary_search_digits(2)
 print(res2)
 
 
