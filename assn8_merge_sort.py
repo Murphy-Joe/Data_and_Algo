@@ -10,29 +10,21 @@ def merge_sort(ls):
         left = ls[:median_index]
         right = ls[median_index:]
 
-        merge_sort(left)
-        merge_sort(right)
+        left_srt = merge_sort(left)
+        right_srt = merge_sort(right)
 
         # actual sorting and merging
         merged = []
-        while left and right:
-            if left[0] < right[0]:
-                merged.append(left[0])
-                del left[0]
+        while left_srt and right_srt:
+            if left_srt[0] < right_srt[0]:
+                merged.append(left_srt.pop(0))
             else:
-                merged.append(right[0])
-                del right[0]
+                merged.append(right_srt.pop(0))
 
-        merged.extend(left) 
-        merged.extend(right)
+        merged.extend(left_srt) 
+        merged.extend(right_srt)
 
-        for i in range(len(merged)):
-            ls[i] = merged[i]
-        
-        #ls = [i for i in merged]
-        #ls = copy.deepcopy(merged)
-
-        return ls
+        return merged
 
 
 lis = [random.randint(1,50) for i in range(12)]
