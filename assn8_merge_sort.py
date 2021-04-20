@@ -32,7 +32,7 @@ def merge_sort(ls):
         #ls = [i for i in merged]
         #ls = copy.deepcopy(merged)
 
-    return ls
+        return ls
 
 
 lis = [random.randint(1,50) for i in range(12)]
