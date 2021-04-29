@@ -65,24 +65,25 @@ class Graph:
         attrs = self.__dict__
         return attrs
 
-# create 1000 nodes
-nodes = set()
+graph1 = Graph()
+
 for i in range(1000):
-    rnum = random.randint(1,100000)
-    a = Node(str(rnum), rnum)
-    nodes.add(a)
+    rnd_num = random.randint(1,100000)
+    new_node = Node(name=str(rnd_num), number=rnd_num)
+    graph1.add_node(new_node)
 
-# enter the nodes into the graph
-g = Graph(nodes)
+nodes = graph1.all_nodes()
 
-# add edges to connect the nodes in the Graph and thereby set neighbors to Nodes
+# create edges in graph, and thereby neighbors for nodes
 for node in nodes:
     if len(node.neighbors) >= 5:
         continue
+    # ah, I finally understand why Java made a do-while loop now
     other_node = random.choice(list(nodes))
     while len(other_node.neighbors) >= 5 or other_node == node or other_node in node.get_neighbors():
         other_node = random.choice(list(nodes))
-    g.add_edge(node, other_node)
+    graph1.add_edge(node, other_node)
 
-pprint(g.all_edges())
+pprint(graph1.all_nodes_neighbors())
+
 
