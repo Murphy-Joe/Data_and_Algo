@@ -38,13 +38,6 @@ class NodeTree:
         elif val < self.value:
             return self.left_child.binary_search_digits(val)
 
-    """ def binary_search_strings(self, val):
-        if val == self.value:
-            return f"String {val} found at Node Object {self}"
-        elif val > self.value:
-            return self.right_child.binary_search_digits(val)
-        elif val < self.value:
-            return self.left_child.binary_search_digits(val) """
                 
 
 digit_tree1 = NodeTree([1,2,3,4,5,6,7])
