@@ -54,6 +54,9 @@ class Graph:
         srtd = sorted(nds, key=lambda x: x.number)
         return srtd
 
+    def all_edges(self):
+        return list(self.edges)
+
     def all_nodes_neighbors(self):
         nd_nb = {node:node.neighbors for node in self.all_nodes()}
         return nd_nb
@@ -81,4 +84,5 @@ for node in nodes:
         other_node = random.choice(list(nodes))
     g.add_edge(node, other_node)
 
-pprint(g.all_nodes_neighbors())
+pprint(g.all_edges())
+
