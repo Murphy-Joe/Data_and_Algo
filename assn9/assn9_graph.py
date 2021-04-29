@@ -7,8 +7,20 @@ class Node:
         self.number = number
         self.neighbors = set()
 
+    # calling node by it's object will return its name
     def __repr__(self):
         return self.name
+
+    # so will node.get_name()
+    def get_name(self):
+        return self.name
+
+    def get_neighbors(self):
+        return list(self.neighbors)
+
+    def get_number(self):
+        return self.number
+
 
     
 class Graph: 
@@ -18,6 +30,11 @@ class Graph:
         self.edges = edges
         self.node_count = len(self.nodes)
 
+    def add_node(self, node):
+        self.nodes.add(node)
+        self.node_count = len(self.nodes)
+        
+
     def add_edge(self, node1, node2):
         self.edges.add((node1, node2))
         self.nodes.update([node1, node2])
@@ -25,45 +42,43 @@ class Graph:
         node2.neighbors.add(node1)
         self.node_count = len(self.nodes)
 
-    def find_node_from_value(self, value):
+    def node_obj_from_value(self, value):
         # designed for a node who's name isn't just the string of its number
         for node in self.nodes:
             if node.number == value:
                 return node
         return None
 
-    def get_sorted_nodes(self):
+    def all_nodes(self):
         nds = list(self.nodes)
         srtd = sorted(nds, key=lambda x: x.number)
         return srtd
 
-    def get_nodes_neighbors(self):
+    def all_nodes_neighbors(self):
         nd_nb = {node:node.neighbors for node in self.get_sorted_nodes()}
         return nd_nb
 
-    def get_profile(self):
+    def profile(self):
         attrs = self.__dict__
         return attrs
 
+# create 1000 nodes
 nodes = set()
 for i in range(1000):
-    a = Node(str(i), i)
+    rnum = random.randint(1,100000)
+    a = Node(str(rnum), rnum)
     nodes.add(a)
 
+# enter the nodes into the graph
 g = Graph(nodes)
 
-def rand_node(max_nodes):
-    val = random.randint(1,max_nodes-1)
-    oth_node = g.find_node_from_value(val)
-    return oth_node
-
-# add edges to the Graph and thereby neighbors to Nodes
+# add edges to connect the nodes in the Graph and thereby set neighbors to Nodes
 for node in nodes:
     if len(node.neighbors) >= 5:
         continue
-    other_node = rand_node(1000)
-    while len(other_node.neighbors) >= 5 or node == other_node:
-        other_node = rand_node(1000)
+    other_node = random.choice(list(nodes))
+    while len(other_node.neighbors) >= 5 or other_node == node or other_node in node.get_neighbors():
+        other_node = random.choice(list(nodes))
     g.add_edge(node, other_node)
 
 pprint(g.get_nodes_neighbors())
