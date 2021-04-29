@@ -55,7 +55,7 @@ class Graph:
         return srtd
 
     def all_nodes_neighbors(self):
-        nd_nb = {node:node.neighbors for node in self.get_sorted_nodes()}
+        nd_nb = {node:node.neighbors for node in self.all_nodes()}
         return nd_nb
 
     def profile(self):
@@ -81,4 +81,4 @@ for node in nodes:
         other_node = random.choice(list(nodes))
     g.add_edge(node, other_node)
 
-pprint(g.get_nodes_neighbors())
+pprint(g.all_nodes_neighbors())
