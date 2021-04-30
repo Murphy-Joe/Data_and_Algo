@@ -113,15 +113,13 @@ class Graph:
 
 graph1 = Graph()
 
-num_nodes = 10000
-max_rnd_num = 10000
-used_nums = set()
+num_nodes = 1000
+max_rnd_num = 1000
+num_choices = [i+1 for i in range(max_rnd_num)]
 
 for i in range(num_nodes):
-    rnd_num = random.randint(1,max_rnd_num)
-    while rnd_num in used_nums:
-        rnd_num = random.randint(1,max_rnd_num)
-    used_nums.add(rnd_num)
+    rnd_num = random.choice(num_choices)
+    num_choices.remove(rnd_num)
     new_node = Node(name=str(rnd_num), number=rnd_num)
     graph1.add_node(new_node)
 
