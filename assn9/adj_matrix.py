@@ -10,11 +10,17 @@ import random
 labels = {0:'a', 1:'b', 2:'c'}
 idx = {'a':0, 'b':1, 'c':2} """
 
+class Vertex:
+    def __init__(self, label, index=None):
+        self.label = label
+        self.index = index
+
 class Matrix:
     def __init__(self):
         self.matrix = [[]]
-        self.labels = {}
         self.idx = {}
+        self.labels = {}
+        self.listings = []
 
 
     def neighbs(self, label):
@@ -33,8 +39,7 @@ class Matrix:
         self.matrix[i1][i2], self.matrix[i2][i1] = 0, 0   
 
     def add_vertex(self, label):
-        highest_idx = list(self.labels.keys())[-1]
-        index = highest_idx + 1
+        index = len(self.labels.keys())
         self.labels.setdefault(index, label)
         self.idx.setdefault(label, index)
         [row.append(0) for row in self.matrix]
@@ -52,6 +57,8 @@ max_rdm_num = 1000
 num_choices = [i for i in range(max_rdm_num)]
 
 m1 = Matrix()
+
+
 
 
 for i in range(num_verts):
