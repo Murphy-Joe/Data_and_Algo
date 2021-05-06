@@ -1,27 +1,10 @@
-from pprint import pprint
 import random
-
-""" matrix = [
-    [0,1,0],
-    [1,0,1],
-    [1,1,0]
-]
-
-labels = {0:'a', 1:'b', 2:'c'}
-idx = {'a':0, 'b':1, 'c':2} """
-
-class Vertex:
-    def __init__(self, label, index=None):
-        self.label = label
-        self.index = index
 
 class Matrix:
     def __init__(self):
         self.matrix = [[]]
         self.idx = {}
         self.labels = {}
-        self.listings = []
-
 
     def neighbs(self, label):
         index = self.idx[label]
@@ -116,6 +99,5 @@ for lbl, index in m1.idx.items():
     while (len(m1.neighbs(other_vert)) >= 5) or (other_vert == lbl) or (other_vert in m1.neighbs(lbl)):
         other_vert = random.choice(verts)
     m1.add_edge(lbl, other_vert)
-
 
 print(m1.shortest('655'))
