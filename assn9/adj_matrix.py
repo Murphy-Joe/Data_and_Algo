@@ -92,9 +92,6 @@ class Matrix:
                 path.append(edge)
         return len(path)
 
-        
-
-
 
 num_verts = 1000
 max_rdm_num = 1000
