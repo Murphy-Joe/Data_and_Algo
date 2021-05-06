@@ -9,8 +9,5 @@ print(len(set1))
 
 print((1,2) in {(2,1), (3,1)}) """
 
-ls = [
-    [1,2,3]
-]
-ls.append([0]*3)
-print(ls)
+for i in range(3):
+    print(i)
